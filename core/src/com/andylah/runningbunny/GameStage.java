@@ -13,6 +13,7 @@ import com.badlogic.gdx.physics.box2d.ContactListener;
 import com.badlogic.gdx.physics.box2d.Manifold;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.utils.Array;
 
 public class GameStage extends Stage implements ContactListener {
 
@@ -27,6 +28,7 @@ public class GameStage extends Stage implements ContactListener {
 
 	private Player bunny;
 	private Ground ground;
+	private Enemy enemy;
 
 	private Vector3 touchPoint;
 	private Rectangle rightScreen;
@@ -43,12 +45,13 @@ public class GameStage extends Stage implements ContactListener {
 		// setup controller
 		setupTouchArea();
 
+		// setup contact listener
+		world.setContactListener(this);
+
 		// setup world komponen
 		createGround();
 		createPlayer();
-
-		// setup contact listener
-		world.setContactListener(this);
+		createEnemy();
 
 	}
 
@@ -73,6 +76,12 @@ public class GameStage extends Stage implements ContactListener {
 
 	}
 
+	private void createEnemy() {
+		enemy = new Enemy(GameUtils.createEnemy(world));
+		addActor(enemy);
+
+	}
+
 	private void setupCamera() {
 		gameCam = new OrthographicCamera(Vars.VIEWPORT_WIDTH, Vars.VIEWPORT_HEIGHT);
 		gameCam.position.set(gameCam.viewportWidth / 2, gameCam.viewportHeight / 2, 0);
@@ -90,12 +99,30 @@ public class GameStage extends Stage implements ContactListener {
 	public void act(float delta) {
 		super.act(delta);
 
+		Array<Body> bodies = new Array<Body>(world.getBodyCount());
+		world.getBodies(bodies);
+
+		for (Body body : bodies) {
+			update(body);
+		}
+
 		// fixed timestamp
 		accumulator += delta;
 
 		while (accumulator >= delta) {
 			world.step(Vars.TIME_STEP, 6, 2);
 			accumulator -= Vars.TIME_STEP;
+		}
+	}
+
+	private void update(Body body) {
+		if (!GameUtils.bodyOnScreen(body)) {
+
+			if (GameUtils.bodyIsEnemy(body) && !bunny.isHit()) {
+				createEnemy();
+			}
+
+			world.destroyBody(body);
 		}
 	}
 
@@ -147,10 +174,14 @@ public class GameStage extends Stage implements ContactListener {
 		Body a = contact.getFixtureA().getBody();
 		Body b = contact.getFixtureB().getBody();
 
-		if ((GameUtils.bodyIsBunny(a) && GameUtils.bodyIsGround(b))
+		if ((GameUtils.bodyIsBunny(a) && GameUtils.bodyIsEnemy(b))
+				|| (GameUtils.bodyIsEnemy(a) && GameUtils.bodyIsBunny(b))) {
+			bunny.isHit();
+			Gdx.app.log(TAG, ": hit = true");
+		} else if ((GameUtils.bodyIsBunny(a) && GameUtils.bodyIsGround(b))
 				|| (GameUtils.bodyIsGround(a) && GameUtils.bodyIsBunny(b))) {
 			bunny.landed();
-			Gdx.app.log(TAG, ": jumping = false");
+
 		}
 
 	}

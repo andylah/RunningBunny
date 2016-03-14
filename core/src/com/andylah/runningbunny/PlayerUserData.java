@@ -2,15 +2,16 @@ package com.andylah.runningbunny;
 
 import com.badlogic.gdx.math.Vector2;
 
-public class PlayerUserData extends UserData{
+public class PlayerUserData extends UserData {
 
 	private Vector2 standPosition;
 	private Vector2 dodgePosition;
 	private Vector2 jumpingLinierImpulse;
 	
-	public PlayerUserData() {
-		super();
-		jumpingLinierImpulse = new Vector2(Vars.JUMP_X,Vars.JUMP_Y);
+
+	public PlayerUserData(float width, float height) {
+		super(width, height);
+		jumpingLinierImpulse = new Vector2(Vars.JUMP_X, Vars.JUMP_Y);
 		dodgePosition = new Vector2(Vars.BUNNY_DODGE_X, Vars.BUNNY_DODGE_Y);
 		standPosition = new Vector2(Vars.BUNNY_X, Vars.BUNNY_Y);
 		userDataType = userDataType.BUNNY;
@@ -25,7 +26,7 @@ public class PlayerUserData extends UserData{
 	}
 
 	public float getDodgeAngle() {
-		//in radian
+		// in radian
 		return (float) (-90f * (Math.PI / 180f));
 	}
 
@@ -37,5 +38,8 @@ public class PlayerUserData extends UserData{
 		return dodgePosition;
 	}
 	
+	public float getHitAngularImpulse(){
+		return Vars.BUNNY_GET_HIT;
+	}
 
 }

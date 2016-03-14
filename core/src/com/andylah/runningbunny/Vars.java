@@ -33,6 +33,16 @@ public class Vars {
 	public static final float JUMP_Y = 13f;
 	public static final float BUNNY_GRAVITY_SCALE = 3f;
 	
+	//final varibale untuk enemy
+	public static final float ENEMY_X = 25f;
+	public static final float SHORT_ENEMY_Y = 1.5f;
+	public static final float LONG_ENEMY_Y = 2f;
+	public static final float FLYING_ENEMY_Y = 3f;
+	public static final float ENEMY_DENSITY = Vars.BUNNY_DENSITY;
+	public static final float ENEMY_LINIER_X = -10f;
+	public static final float ENEMY_LINIER_Y = 0f;
 	
+	//variable jika bunny tekena enemy
+	public static final float BUNNY_GET_HIT = 10f;
 
 }
