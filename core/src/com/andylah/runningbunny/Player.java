@@ -20,14 +20,14 @@ public class Player extends GameActor {
 	}
 
 	public void jump() {
-		if (!(jumping || dodging || hit)) {
+		if (!jumping || !dodging || !hit) {
 			body.applyLinearImpulse(getUserData().getJumpingLinierImpulse(), body.getWorldCenter(), true);
 			jumping = true;
 		}
 	}
 
 	public void dodge() {
-		if (!(jumping || hit)) {
+		if (!jumping || !hit) {
 			body.setTransform(getUserData().getDodgePosition(), getUserData().getDodgeAngle());
 			dodging = true;
 		}
@@ -35,7 +35,7 @@ public class Player extends GameActor {
 
 	public void landed() {
 		jumping = false;
-		Gdx.app.log(TAG, ": jumping = false");
+		//Gdx.app.log(TAG, ": jumping = false");
 	}
 
 	public void stopDodging() {

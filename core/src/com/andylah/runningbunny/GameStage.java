@@ -134,11 +134,11 @@ public class GameStage extends Stage implements ContactListener {
 
 		if (rightScreenTouched(touchPoint.x, touchPoint.y)) {
 			bunny.jump();
-			Gdx.app.log(TAG, ": jumping = true");
+			//Gdx.app.log(TAG, ": jumping = true");
 
 		} else if (leftScreenTouched(touchPoint.x, touchPoint.y)) {
 			bunny.dodge();
-			Gdx.app.log(TAG, ": dodge = true");
+			//Gdx.app.log(TAG, ": dodge = true");
 		}
 
 		return super.touchDown(screenX, screenY, pointer, button);
@@ -149,7 +149,7 @@ public class GameStage extends Stage implements ContactListener {
 	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
 		if (bunny.isDodging()) {
 			bunny.stopDodging();
-			Gdx.app.log(TAG, ": dodge = false");
+			//Gdx.app.log(TAG, ": dodge = false");
 		}
 
 		return super.touchUp(screenX, screenY, pointer, button);
@@ -173,17 +173,18 @@ public class GameStage extends Stage implements ContactListener {
 
 		Body a = contact.getFixtureA().getBody();
 		Body b = contact.getFixtureB().getBody();
-
-		if ((GameUtils.bodyIsBunny(a) && GameUtils.bodyIsEnemy(b))
-				|| (GameUtils.bodyIsEnemy(a) && GameUtils.bodyIsBunny(b))) {
-			bunny.isHit();
-			Gdx.app.log(TAG, ": hit = true");
-		} else if ((GameUtils.bodyIsBunny(a) && GameUtils.bodyIsGround(b))
+		
+		if ((GameUtils.bodyIsBunny(a) && GameUtils.bodyIsGround(b))
 				|| (GameUtils.bodyIsGround(a) && GameUtils.bodyIsBunny(b))) {
 			bunny.landed();
-
+			//Gdx.app.log(TAG, ": jumping = false");
 		}
 
+		else if ((GameUtils.bodyIsBunny(a) && GameUtils.bodyIsEnemy(b))
+				|| (GameUtils.bodyIsEnemy(a) && GameUtils.bodyIsBunny(b))) {
+			bunny.isHit();
+			//Gdx.app.log(TAG, ": hit = true");
+		}
 	}
 
 	@Override

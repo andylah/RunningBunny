@@ -39,7 +39,7 @@ public class Vars {
 	public static final float LONG_ENEMY_Y = 2f;
 	public static final float FLYING_ENEMY_Y = 3f;
 	public static final float ENEMY_DENSITY = Vars.BUNNY_DENSITY;
-	public static final float ENEMY_LINIER_X = -10f;
+	public static final float ENEMY_LINIER_X = -8f;
 	public static final float ENEMY_LINIER_Y = 0f;
 	
 	//variable jika bunny tekena enemy
