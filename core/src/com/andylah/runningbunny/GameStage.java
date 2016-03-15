@@ -47,12 +47,19 @@ public class GameStage extends Stage implements ContactListener {
 
 		// setup contact listener
 		world.setContactListener(this);
+		
+		//setup background
+		createBackground();
 
 		// setup world komponen
 		createGround();
 		createPlayer();
-		createEnemy();
+		//createEnemy();
 
+	}
+
+	private void createBackground() {
+		addActor(new Background());
 	}
 
 	private void setupTouchArea() {
@@ -92,7 +99,7 @@ public class GameStage extends Stage implements ContactListener {
 	@Override
 	public void draw() {
 		super.draw();
-		b2dr.render(world, gameCam.combined);
+		//b2dr.render(world, gameCam.combined);
 	}
 
 	@Override

@@ -4,6 +4,7 @@ public class Vars {
 	// APP setup
 	public static final int APP_WIDTH = 800;
 	public static final int APP_HEIGHT = 480;
+	public static final float WORLD_TO_SCREEN = 32;
 
 	// final variable untuk ground
 	public static final float GROUND_WIDTH = 50f;
@@ -44,5 +45,13 @@ public class Vars {
 	
 	//variable jika bunny tekena enemy
 	public static final float BUNNY_GET_HIT = 10f;
-
+	
+	//variable path untuk gambar background
+	public static final String BACKGROUND_PATH = "background.png"; 
+	
+	//variable untuk images
+	public static final String CHARACTER_ATLAS = "character.atlas";
+	public static final String[] RUNNING_CHARACTER_SET = new String[]{"1","2","3","4"};
+	public static final String JUMPING_CHARACTER = "jump";
+	public static final String DODGING_CHARACTER = "slide";
 }
