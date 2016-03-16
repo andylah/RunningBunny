@@ -3,45 +3,52 @@ character.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
+hit
+  rotate: false
+  xy: 1, 13
+  size: 147, 153
+  orig: 147, 153
+  offset: 0, 0
+  index: -1
 slide
   rotate: false
-  xy: 1, 21
-  size: 58, 35
-  orig: 58, 35
+  xy: 150, 58
+  size: 168, 108
+  orig: 168, 108
   offset: 0, 0
   index: -1
 1
   rotate: false
-  xy: 61, 4
-  size: 34, 52
-  orig: 34, 52
+  xy: 320, 10
+  size: 102, 156
+  orig: 102, 156
   offset: 0, 0
   index: -1
 2
   rotate: false
-  xy: 97, 4
-  size: 34, 52
-  orig: 34, 52
+  xy: 424, 10
+  size: 102, 156
+  orig: 102, 156
   offset: 0, 0
   index: -1
 3
   rotate: false
-  xy: 133, 4
-  size: 34, 52
-  orig: 34, 52
+  xy: 528, 10
+  size: 102, 156
+  orig: 102, 156
   offset: 0, 0
   index: -1
 4
   rotate: false
-  xy: 169, 1
-  size: 34, 55
-  orig: 34, 55
+  xy: 632, 1
+  size: 102, 165
+  orig: 102, 165
   offset: 0, 0
   index: -1
 jump
   rotate: false
-  xy: 205, 7
-  size: 34, 49
-  orig: 34, 49
+  xy: 736, 19
+  size: 102, 147
+  orig: 102, 147
   offset: 0, 0
   index: -1

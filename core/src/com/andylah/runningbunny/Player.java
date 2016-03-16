@@ -15,6 +15,7 @@ public class Player extends GameActor {
 	private Animation runningAnimation;
 	private TextureRegion jumpingTexture;
 	private TextureRegion slideTexture;
+	private TextureRegion hitTexture;
 	private float stateTime;
 
 	public Player(Body body) {
@@ -35,6 +36,9 @@ public class Player extends GameActor {
 		// load dodging texture
 		slideTexture = textureAtlas.findRegion(Vars.DODGING_CHARACTER);
 
+		// load hit texture
+		hitTexture = textureAtlas.findRegion(Vars.HIT_CHARACTER);
+
 		stateTime = 0f;
 	}
 
@@ -45,6 +49,10 @@ public class Player extends GameActor {
 		if (dodging) {
 			batch.draw(slideTexture, screenRectangle.x, screenRectangle.y + screenRectangle.getHeight() / 4,
 					screenRectangle.width + 5, screenRectangle.height * 3 / 4);
+		} else if (hit) {
+			batch.draw(hitTexture, screenRectangle.x, screenRectangle.y, screenRectangle.width * 0.5f,
+					screenRectangle.height * 0.5f, screenRectangle.width, screenRectangle.height, 1f, 1f,
+					(float) Math.toDegrees(body.getAngle()));
 		} else if (jumping) {
 			batch.draw(jumpingTexture, screenRectangle.x, screenRectangle.y, screenRectangle.width,
 					screenRectangle.height);

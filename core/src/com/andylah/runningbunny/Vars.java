@@ -54,4 +54,5 @@ public class Vars {
 	public static final String[] RUNNING_CHARACTER_SET = new String[]{"1","2","3","4"};
 	public static final String JUMPING_CHARACTER = "jump";
 	public static final String DODGING_CHARACTER = "slide";
+	public static final String HIT_CHARACTER = "hit";
 }

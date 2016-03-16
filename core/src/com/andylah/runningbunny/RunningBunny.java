@@ -10,9 +10,6 @@ public class RunningBunny extends Game {
 		setScreen(new GameScreen());
 	}
 
-	@Override
-	public void render () {
-		super.render();
-		
-	}
+	
+	
 }
